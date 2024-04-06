@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="U2_Proyecto.Views.EpisodioView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:U2_Proyecto.Views" xmlns:viewmodels="clr-namespace:U2_Proyecto.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TemporadaViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"  FontFamily="Bebas neue">
+
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel>
+
+        <Border BorderThickness="1" BorderBrush="Black" Background="#BDC3C7">
+            <DockPanel>
+                <Image Margin="10" DockPanel.Dock="Left" Height="170" Width="220" Stretch="Fill" HorizontalAlignment="Left" Source="{Binding URLImagenEpisodio}"></Image>
+                <StackPanel Margin="10">
+                    <TextBlock Margin="5" FontWeight="Bold">Episodio: <Run Text="{Binding NumeroEpisodio}"></Run></TextBlock>
+                    <TextBlock Margin="5" FontWeight="Bold">Nombre: <Run FontWeight="Normal"  Text="{Binding NombreEpisodio}"></Run></TextBlock>
+                    <TextBlock Margin="5" FontWeight="Bold" >Descripción: </TextBlock>
+                    <TextBlock Margin="5" TextWrapping="Wrap" TextAlignment="Justify" Text="{Binding Descripcion}"></TextBlock>
+                    <TextBlock Margin="5" FontWeight="Bold">Duración:</TextBlock>
+                    <TextBlock Margin="5"><Run Text="{Binding Duracion}"></Run> Min</TextBlock>
+                   
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

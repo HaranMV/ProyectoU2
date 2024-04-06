@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="U2_Proyecto.Views.AgregarEditarTemporada"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:U2_Proyecto.Views" xmlns:ViewModels="clr-namespace:U2_Proyecto.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="DimGray">
+    <DockPanel>
+        <DockPanel.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="Margin" Value="-10,0,0,6"></Setter>
+                <Setter Property="BorderBrush" Value="Black"></Setter>
+                <Setter Property="BorderThickness" Value="2"></Setter>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="Width" Value="210"></Setter>
+                <Setter Property="Margin" Value="0,0,0,5"></Setter>
+                <Setter Property="FontFamily" Value="Verdana Bold"></Setter>
+                <Setter Property="FontSize" Value="10"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontSize" Value="12"></Setter>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="10,10,20,0"></Setter>
+                <Setter Property="Padding" Value="20,8"></Setter>
+                <Setter Property="BorderBrush" Value="Black"></Setter>
+                <Setter Property="Background" Value="Transparent"></Setter>
+            </Style>
+
+            <Style TargetType="GroupBox">
+                <Setter Property="FontWeight" Value="ExtraBold"></Setter>
+                <Setter Property="FontSize" Value="15"></Setter>
+                <Setter Property="FontFamily" Value="Bebas neue"></Setter>
+            </Style>
+        </DockPanel.Resources>
+        
+        <GroupBox  Header="Agregar o editar una nueva temporada" Margin="5" >
+            <StackPanel Margin="10">
+                
+                <StackPanel Margin="5">
+                    <Label >Número de temporada:</Label>
+                    <TextBox Width="300" Text="{Binding Temporada.NumeroTemporada}"></TextBox>
+                </StackPanel>
+
+                <StackPanel>
+                    <Label>Número de episodios:</Label>
+                    <TextBox Width="300" Text="{Binding Temporada.NumeroEpisodios}"></TextBox>
+                </StackPanel>
+
+                <StackPanel>
+                    <Label>Información de la temporada:</Label>
+                    <TextBox Width="500" Text="{Binding Temporada.InfoTemporada}"></TextBox>
+                </StackPanel>
+
+                <StackPanel>
+                    <Label Width="250">URL de la imagen de la temporada:</Label>
+                    <TextBox Width="500" Text="{Binding Temporada.URLTemporada}"></TextBox>
+                </StackPanel>
+                <TextBlock HorizontalAlignment="Center" Foreground="Red" Text="{Binding Error}"></TextBlock>
+
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button Content="Agregar temporada">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Command" Value="{Binding AgregarTemporadaCommand}"></Setter>
+                                <Setter Property="Margin" Value="10,10,20,0"></Setter>
+                                <Setter Property="Padding" Value="20,8"></Setter>
+                                <Setter Property="BorderBrush" Value="Black"></Setter>
+                                <Setter Property="Background" Value="Transparent"></Setter>
+                                <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Vista}" Value="{x:Static ViewModels:Vistas.AgregarTemporada}">
+                                        <Setter Property="Visibility" Value="Visible"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style> 
+                        </Button.Style>
+                    </Button>
+                    <Button Command="{Binding EditarTemporadaCommand}" Content="Editar">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin" Value="10,10,20,0"></Setter>
+                                <Setter Property="Padding" Value="20,8"></Setter>
+                                <Setter Property="BorderBrush" Value="Black"></Setter>
+                                <Setter Property="Background" Value="Transparent"></Setter>
+                                <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Vista}" Value="{x:Static ViewModels:Vistas.EditarTemporada}">
+                                        <Setter Property="Visibility" Value="Visible"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        
+                    </Button>
+                    <Button Command="{Binding CancelarCommand}" Content="Cancelar"></Button>
+                </WrapPanel>
+            </StackPanel>
+        </GroupBox>
+
+    </DockPanel>
+</UserControl>

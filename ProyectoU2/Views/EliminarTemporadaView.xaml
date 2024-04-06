@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="U2_Proyecto.Views.EliminarTemporadaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:U2_Proyecto.Views" xmlns:viewmodels="clr-namespace:U2_Proyecto.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TemporadaViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="#50000000" FontFamily="Bebas neue">
+    <Border Padding="5" Background="Gray" BorderBrush="Black" BorderThickness="2" Width="570" Height="150">
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock FontSize="30" TextWrapping="Wrap" TextAlignment="Center" >¿Desea eliminar la temporada número: <Run Text="{Binding Temporada.NumeroTemporada}"></Run>?</TextBlock>
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Center" Margin="10">
+                <Button Command="{Binding EliminarTemporadaCommand}" FontSize="20" Padding="5,5" Margin="5" Background="Blue" Foreground="White">Confirmar</Button>
+                <Button Command="{Binding CancelarCommand}" FontSize="20" Padding="5,5" Margin="5">Cancelar</Button>
+            </WrapPanel>
+         
+        </StackPanel>
+        
+    </Border>
+</UserControl>

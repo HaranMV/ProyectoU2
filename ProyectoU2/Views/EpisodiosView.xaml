@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="U2_Proyecto.Views.EpisodiosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:U2_Proyecto.Views" xmlns:viewmodels="clr-namespace:U2_Proyecto.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TemporadaViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="#454848" >
+
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#50000000"></Setter>
+            <Setter Property="BorderBrush" Value="DarkGray"></Setter>
+            <Setter Property="Foreground" Value="#DBDDEF"></Setter>
+            <Setter Property="FontWeight" Value="ExtraBold"></Setter>
+        </Style>
+    </UserControl.Resources>
+
+
+    <DockPanel>
+        
+        <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="5">
+            <Button Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:Vistas.AgregarEpisodio}" Content="Nuevo Episodio"  Padding="10,3"></Button>
+        <Button Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:Vistas.EditarEpisodio}" Content="Editar Episodio" Padding="10,3"></Button>
+            <Button Command="{Binding CambiarVistaCommand}" CommandParameter="{x:Static viewmodels:Vistas.ElimianarEpisodio}" Content="Eliminar Episodio" Padding="10,3"></Button>
+                </WrapPanel>
+        <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Right">
+            <WrapPanel HorizontalAlignment="Right">
+                <Button Command="{Binding CancelarCommand}" Padding="5,5" FontSize="15" BorderBrush="Red">Regresar</Button>
+            </WrapPanel>
+        </WrapPanel>
+        <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
+            <TextBlock DockPanel.Dock="Top" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#DBDDEF">Episodios de la Temporada <Run Text="{Binding Temporada.NumeroTemporada}"></Run></TextBlock>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Right">
+            <TextBox Height="20" Width="200"></TextBox>
+            <Button>Buscar</Button>
+        </DockPanel>
+        
+            <ScrollViewer VerticalScrollBarVisibility="Disabled">
+            <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" ItemsSource="{Binding EpisodioObservable}" SelectedItem="{Binding Episodio}" Background="Transparent"  BorderThickness="0">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel></StackPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <local:EpisodioView></local:EpisodioView>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+        
+
+    </DockPanel>
+</UserControl>

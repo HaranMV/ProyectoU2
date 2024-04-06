@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="U2_Proyecto.Views.TemporadaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:U2_Proyecto.Views" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" FontFamily="Bebas neue">
+    <StackPanel Width="300"  Margin="10" Background="#50000000" >
+
+        <WrapPanel HorizontalAlignment="Center">
+            <TextBlock Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"
+               DockPanel.Dock="Top" Foreground="White">Temporada <Run Text="{Binding NumeroTemporada}"></Run></TextBlock>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Center"></WrapPanel>
+
+       
+            <StackPanel Margin="10">
+                <Image Height="150" Width="150"  Stretch="Fill" Margin="5" Source="{Binding URLTemporada}"></Image>
+                <WrapPanel HorizontalAlignment="Center">
+                <TextBlock FontWeight="Bold">Número de episodios: <Run Text="{Binding NumeroEpisodios}"></Run></TextBlock>
+            </WrapPanel>
+            <TextBlock HorizontalAlignment="Center" Margin="10" Foreground="LightGray" TextWrapping="Wrap" FontSize="11" Text="{Binding InfoTemporada}"></TextBlock>
+            </StackPanel>
+        
+    </StackPanel>
+</UserControl>
